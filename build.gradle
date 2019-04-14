@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.14.3'
+    testCompile "com.codeborne:selenide:5.1.0"
+    testCompile "org.assertj:assertj-core:3.11.1"
+    compile 'org.apache.poi:poi-ooxml:4.0.1'
+}
