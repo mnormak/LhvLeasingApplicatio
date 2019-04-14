@@ -255,12 +255,6 @@ public class LeasingActions extends Application {
         }
     }
 
-//    private void fillInput(SelenideElement input, String text) {
-//        if (text != null && !text.equals("")) {//TODO delete?
-//            input.sendKeys(text);
-//        }
-//    }
-
     private void fillVatIncludedData(String vatIncluded) {
         switch (vatIncluded.toLowerCase()) {
             case "yes":
@@ -398,9 +392,4 @@ public class LeasingActions extends Application {
             closeCookieWarningBtn.click();
         }
     }
-    //TODO manuaal, panna protsent 20dd ja siis dd ära kustutada ja vaadata et eurod on õigesti üle arvutatud
-    //Next nupp on esimeselkorral aktiivne ja pärast refreshi mitteaktiivne
-    //liisingu perioodi ei kontrollita kui midagi muud viga on vormil
-    //kui euro väli on vale, siis label ei ole punane (protsendi välja puhul on)
-    //sisesta protsent, kustuta protsent - eurod on mingi väärtus ja vastupidi euro vs protsent
 }
