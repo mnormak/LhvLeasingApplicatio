@@ -194,7 +194,7 @@ public class LeasingPage extends Application {
         if (isLeasePeriodFaulty) {
             assertFaultyInputColor(softly, dropDownLeasePeriodYears, "Lease period years");
             assertFaultyInputColor(softly, dropDownLeasePeriodMonths, "Lease period months");
-            assertFaultyLabelColor(softly, labelLeasePeriod, "Lease period months");
+            assertFaultyLabelColor(softly, labelLeasePeriod, "Lease period");
         }
         if (isResidualValuePercentageFaulty) {
             assertFaultyInputColor(softly, inputResidualValuePercentage, residualValueString + " %");
