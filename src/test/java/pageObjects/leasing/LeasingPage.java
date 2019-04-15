@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class LeasingActions extends Application {
+public class LeasingPage extends Application {
     private String vehiclePriceString = "Vehicle price";
     private String downPaymentString = "Downpayment";
     private String residualValueString = "Residual value";
@@ -59,7 +59,7 @@ public class LeasingActions extends Application {
             containersErrorMessage = $$(".msg-error"),
             rowsErrorMessage = $$(".row");
 
-    public LeasingActions selectLanguage(String language) {
+    public LeasingPage selectLanguage(String language) {
         closeCookieWarningBtn();
         switch (language.toLowerCase()) {
             case "et":
@@ -77,7 +77,7 @@ public class LeasingActions extends Application {
         return this;
     }
 
-    public LeasingActions fillData(Map<String, String> data) {
+    public LeasingPage fillData(Map<String, String> data) {
         switchTo().frame(iFrame);
         selectPersonType(data.get(xlsNamePersonType));
         selectLeasingType(data.get(XlsNameLeaseType));
@@ -94,7 +94,7 @@ public class LeasingActions extends Application {
         return this;
     }
 
-    public LeasingActions checkCalculationsCorrectness(Map<String, String> data) {
+    public LeasingPage checkCalculationsCorrectness(Map<String, String> data) {
         if (data.get(xlsNameVehiclePrice).equals("")) {
             throw new RuntimeException(vehiclePriceString + " has to be filled in for checking calculations!");
         }
@@ -146,7 +146,7 @@ public class LeasingActions extends Application {
         return this;
     }
 
-    public LeasingActions clickNext() {
+    public LeasingPage clickNext() {
         buttonNext.waitUntil(Condition.enabled, 3000);
         buttonNext.click();
 
@@ -164,9 +164,9 @@ public class LeasingActions extends Application {
         String residualValuePercentage = data.get(xlsNameResidualValuePercentage);
         String residualValueEuros = data.get(xlsNameResidualValueEuros);
         boolean isVehiclePriceFaulty = !vehiclePrice.matches("\\d+");
-        boolean isDownPaymentPercentageFaulty = isPercentageFieldFaultyFaulty(downPaymentPercentage);
+        boolean isDownPaymentPercentageFaulty = isPercentageFieldFaulty(downPaymentPercentage);
         boolean isDownPaymentEurosFaulty = isEurosInputFieldFaulty(downPaymentEuros, vehiclePrice);
-        boolean isResidualValuePercentageFaulty = isPercentageFieldFaultyFaulty(residualValuePercentage);
+        boolean isResidualValuePercentageFaulty = isPercentageFieldFaulty(residualValuePercentage);
         boolean isResidualValueEurosFaulty = isEurosInputFieldFaulty(residualValueEuros, vehiclePrice);
         boolean isLeasePeriodFaulty = dropDownLeasePeriodYears.getText().equals("0") && dropDownLeasePeriodMonths.getText().equals("0");
 
@@ -303,7 +303,7 @@ public class LeasingActions extends Application {
         dropDownDateOfPayment.selectOption(dateOfPayment);
     }
 
-    private boolean isPercentageFieldFaultyFaulty(String percentage) {
+    private boolean isPercentageFieldFaulty(String percentage) {
         if (percentage.equals("")) {
             return false;
         }

@@ -1,7 +1,7 @@
 package pageObjects;
 
 import com.codeborne.selenide.Selenide;
-import pageObjects.leasing.LeasingActions;
+import pageObjects.leasing.LeasingPage;
 import utils.ConfigUtil;
 
 public class Application {
@@ -16,11 +16,11 @@ public class Application {
     protected static String RESIDUAL_VALUE_MISMATCH_ERROR_RU = "Процент остаточной стоимости не соответствует сумме";
 
 
-    public static LeasingActions openLeasingApplicationPage(String browser) {
+    public static LeasingPage openLeasingApplicationPage(String browser) {
         createDriver(browser);
         Selenide.open("https://www.lhv.ee/et/liising/taotlus");
 
-        return new LeasingActions();
+        return new LeasingPage();
     }
 
     private static void createDriver(String browser) {
